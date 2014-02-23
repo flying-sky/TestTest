@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  >
+	<!-- 
+		select-before-update="true":更新之前查询数据库
+		 unsaved-value="0":id为int类型时，值相同则表示是临时对象
+	 -->
+	<class name="com.rihui.state.Customer" table="customer">
+		<id name="cid" type="java.lang.Integer" length="5">
+			<column name="cid"></column>
+			<generator class="increment"></generator>
+		</id>
+		<property name="description" type="java.lang.String" length="255">
+			<column name="description"></column>
+		</property>
+		<property name="name" type="java.lang.String" length="20">
+			<column name="name"></column>
+		</property>
+		<set name="orders" table="orders">
+		
+			<key>
+				<column name="cid"></column>
+			</key>
+			<one-to-many class="com.rihui.state.Orders"/>
+		</set>
+	</class>
+</hibernate-mapping>

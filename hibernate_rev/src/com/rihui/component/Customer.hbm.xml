@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.rihui.component.Customer" table="customer">
+	
+		<id name="id" type="java.lang.Integer">
+			<column name="id"></column>
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="name" type="java.lang.String">
+			<column name="name"></column>
+		</property>
+		
+		<component name="comAddr" class="com.rihui.component.Address">
+			<property name="city" type="java.lang.String" column="com_city"></property>
+			<property name="code" type="java.lang.String" column="com_code"></property>
+			<property name="province" type="java.lang.String" column="com_province"></property>
+			<property name="street" type="java.lang.String" column="com_Street"></property>
+		</component>
+
+		<component name="homeAddr" class="com.rihui.component.Address">
+			<property name="city" type="java.lang.String" column="home_city"></property>
+			<property name="code" type="java.lang.String" column="home_code"></property>
+			<property name="province" type="java.lang.String" column="home_province"></property>
+			<property name="street" type="java.lang.String" column="home_Street"></property>
+		</component>
+	
+	</class>
+
+</hibernate-mapping>

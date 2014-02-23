@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.rihui.composite02.Customer" table="customer">
+		
+		<composite-id name="id" class="com.rihui.composite02.CustomerID">
+			<key-property name="firstName" type="java.lang.String">
+				<column name="firstName" sql-type="varchar(15)"></column>
+			</key-property>
+			<key-property name="lastName" type="java.lang.String">
+				<column name="lastName" sql-type="varchar(15)"></column>
+			</key-property>
+		</composite-id>
+		
+		<property name="desription" type="java.lang.String">
+			<column name="description" sql-type="text"></column>
+		</property>
+		
+	</class>
+
+</hibernate-mapping>

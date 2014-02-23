@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  >
+	<class name="com.rihui.many2one.Customer" table="customer">
+	
+		<id name="id" type="java.lang.Integer">
+			<column name="id"></column>
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="description" type="java.lang.String">
+			<column name="description" sql-type="text"></column>
+		</property>
+		
+		<property name="name" type="java.lang.String">
+			<column name="name" sql-type="varchar(20)"></column>
+		</property>
+	
+	</class>
+</hibernate-mapping>

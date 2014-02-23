@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  >
+	<class name="com.rihui.search.Customer" table="customer" >
+		<id name="id" type="java.lang.Integer" length="5">
+			<column name="id"></column>
+			<generator class="increment"></generator>
+		</id>
+		<property name="age" type="java.lang.Integer" length="3">
+			<column name="age"></column>
+		</property>
+		<property name="name" type="java.lang.String" length="20">
+			<column name="name"></column>
+		</property>
+		<set name="orders" table="orders" cascade="save-update" inverse="true" fetch="select" lazy="false">
+			<key>
+				<column name="cid"></column>
+			</key>
+			<one-to-many class="com.rihui.search.Orders"/>
+		</set>
+		
+		
+		
+	</class>
+</hibernate-mapping>

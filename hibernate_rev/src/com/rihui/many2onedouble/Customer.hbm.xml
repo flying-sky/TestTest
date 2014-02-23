@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  >
+	<class name="com.rihui.many2onedouble.Customer" table="customer">
+		<id name="cid" type="java.lang.Integer" length="5">
+			<column name="cid"></column>
+			<generator class="increment"></generator>
+		</id>
+		<property name="description" type="java.lang.String" length="255">
+			<column name="description"></column>
+		</property>
+		<property name="name" type="java.lang.String" length="20">
+			<column name="name"></column>
+		</property>
+		<!-- 
+			cascade="delete-orphan":解除关系的同时删除解除关系的对象
+			customer.getOrders().remove(orders);
+		 -->
+		<set name="orders" table="orders" cascade="delete-orphan">
+		
+			<key>
+				<column name="cid"></column>
+			</key>
+			<one-to-many class="com.rihui.many2onedouble.Orders"/>
+		</set>
+	</class>
+</hibernate-mapping>

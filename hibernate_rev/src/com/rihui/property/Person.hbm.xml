@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  >
+	<!-- 
+		1、dynamic-insert:默认值为false,如果设置为true则当字段为null时，sql语句中不包括null字段
+		false:insert into person (description, pname, pid) values (?, ?, ?)
+		true:insert into person (pname, pid) values (?, ?)
+		2、dynamic-update默认值为false
+		如果设置为true表示，当字段不更新时，sql语句中不出现该字段
+		update person set description=? where pid=?
+		mutable="true"默认值为true,表示property属性的update为true,false则表示update为false,实例不能更新
+	 -->
+	<class name="com.rihui.property.Person" table="person" mutable="true">
+		
+		<id name="pid" type="java.lang.Integer" length="5">
+			<column name="pid"></column>
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="description" type="java.lang.String" length="65535">
+			<column name="description"></column>
+		</property>
+		
+		<property name="pname" type="java.lang.String" length="100">
+			<column name="pname"></column>
+		</property>
+	
+	</class>
+
+</hibernate-mapping>
